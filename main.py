@@ -1,7 +1,6 @@
 import os
 import requests
 from flask import Flask, request, jsonify
-import google.generativeai as genai
 from groq import Groq
 import PyPDF2
 
