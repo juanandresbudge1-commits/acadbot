@@ -47,9 +47,10 @@ def webhook():
     print("Received:", data)
     
     try:
-        message = data["message"]["content"]
-        phone = data["conversation"]["contact"]["phone"]
-        conversation_id = data["conversation"]["id"]
+    print("Full webhook data:", data)
+    message = data.get("message", {}).get("content", "") or data.get("text", "") or str(data)
+    phone = data.get("conversation", {}).get("contact", {}).get("phone", "") or data.get("phone", "")
+    conversation_id = data.get("conversation", {}).get("id", "") or data.get("conversation_id", "")
         
         pdf_path = find_pdf(message)
         
